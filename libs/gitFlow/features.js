@@ -20,8 +20,23 @@ async function del(repo, name){
   return await BasicBranching.deleteBranch(repo, FEAT_BASE + name)
 }
 
+async function checkout(repo, name){
+  const LOG = new SimpleLogger("CheckOutFeature");
+  const FEAT_BASE = "feat/";
+  try{
+    LOG.info("Running command")
+    await Runner(`git -C ${repo} checkout ${FEAT_BASE + name}`);
+    LOG.info("Checkout to feature {name}", {name});
+    return true;
+  }catch(error){
+    let msg = typeof err != 'object' ? err : err.toString();
+    LOG.error(msg);
+    return false;
+  }
+}
 
 module.exports = {
   create,
-  delete: del
+  delete: del,
+  checkout
 }
