@@ -13,7 +13,15 @@ async function create(repo, name){
   return await BasicBranching.createBranch(repo, FEAT_BASE + repo);
 }
 
+async function del(repo, name){
+  const LOG = new SimpleLogger("DeleteFeature");
+  LOG.info("Deleting feature {name}", {name});
+  const FEAT_BASE =  "feat/";
+  return await BasicBranching.deleteBranch(repo, FEAT_BASE + name)
+}
+
 
 module.exports = {
-  create
+  create,
+  delete: del
 }
