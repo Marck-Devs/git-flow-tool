@@ -1,0 +1,19 @@
+{
+  "name": "mk-git-flow",
+  "version": "0.0.1",
+  "main": "index.html",
+  "repository": "http://gitea.marck-devs.com/marck/MK-git-flow.git",
+  "author": "Marck C. Guzmán <marck@marck-devs.com>",
+  "license": "MIT",
+  "window": {
+    "icon": "assets/img/icon.png"
+  },
+  "scripts": {
+    "startW": "./nwjs/nw.exe ."
+  },
+  "dependencies": {
+    "commander": "^9.0.0",
+    "dotenv": "^14.2.0",
+    "mk-simple-logger": "^0.1.7"
+  }
+}
