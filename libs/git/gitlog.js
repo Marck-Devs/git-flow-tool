@@ -1,6 +1,7 @@
 const {
     SimpleLogger
 } = require('mk-simple-logger');
+const { logError } = require('../error');
 const commander = require('../runner');
 
 async function getLogForBranch(repo, branch) {
@@ -26,7 +27,7 @@ async function getLogForBranch(repo, branch) {
             }
         }
     } catch (err) {
-        LOG.error(err.toString());
+        logError(LOG, err);
     }
     return out;
 }
@@ -56,7 +57,7 @@ async function getCommitInfo(repo, uid) {
             }
         }
     } catch (err) {
-        LOG.error(err);
+        logError(LOG, err);
     }
     return OUT;
 }

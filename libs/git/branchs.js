@@ -1,6 +1,7 @@
 const {
     SimpleLogger
 } = require('mk-simple-logger');
+const { logError } = require('../error');
 const commander = require('../runner');
 
 async function createListBranchs(repo) {
@@ -23,8 +24,7 @@ async function createListBranchs(repo) {
         }
         return OUT;
     } catch (err) {
-        let msg = typeof err != 'object' ? err : err.toString();
-        LOG.error(msg);
+        logError(LOG, err);
     }
 }
 
@@ -38,11 +38,7 @@ async function createBranch(repo, branch, base = "") {
         await commander(CMD);
         return true;
     } catch (err) {
-        let msg = err;
-        if (typeof err == 'object') {
-            msg = err.toString();
-        }
-        LOG.error(msg);
+        logError(LOG, err);
     }
     return false;
 }
@@ -57,8 +53,7 @@ async function deleteBranch(repo, branch) {
         await commander(CMD);
         return true;
     } catch (err) {
-        let msg = typeof err == "object" ? err.toString() : err;
-        LOG.error(msg);
+       logError(LOG, err);
     }
 }
 

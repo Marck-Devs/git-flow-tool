@@ -1,7 +1,8 @@
 const {
     SimpleLogger
 } = require('mk-simple-logger');
-const path = require('path')
+const path = require('path');
+const { logError } = require('../error');
 const commander = require('../runner');
 
 async function getStatusList(folder) {
@@ -41,7 +42,7 @@ async function getStatusList(folder) {
 
         // console.log(NOTSTAGE_INDEX, COMMIT_INDEX, UNTRAKED_INDEX);
     } catch (err) {
-        LOG.error(err + "");
+        logError(LOG, err);
     }
     // console.log(out);
     LOG.info("Proccesing stdout")
