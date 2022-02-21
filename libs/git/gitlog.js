@@ -1,7 +1,7 @@
 const {
     SimpleLogger
 } = require('mk-simple-logger');
-const commander = require('./runner');
+const commander = require('../runner');
 
 async function getLogForBranch(repo, branch) {
     const CMD = `git -C ${repo} log --oneline ${branch}`;

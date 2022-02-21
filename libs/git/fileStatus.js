@@ -2,7 +2,7 @@ const {
     SimpleLogger
 } = require('mk-simple-logger');
 const path = require('path')
-const commander = require('./runner');
+const commander = require('../runner');
 
 async function getStatusList(folder) {
     const LOG = new SimpleLogger("Untraked Files");
