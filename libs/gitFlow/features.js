@@ -1,6 +1,6 @@
 const {SimpleLogger} = require("mk-simple-logger");
-const { Runner } = require("..");
-const {BasicBranching} = require("../git")
+const { logError } = require("../error");
+const {BasicBranching, Checkout} = require("../git")
 
 async function create(repo, name){
   const LOG = new SimpleLogger("CreateFeature");
@@ -25,12 +25,11 @@ async function checkout(repo, name){
   const FEAT_BASE = "feat/";
   try{
     LOG.info("Running command")
-    await Runner(`git -C ${repo} checkout ${FEAT_BASE + name}`);
+    let out = await Checkout(repo, FEAT_BASE + name);
     LOG.info("Checkout to feature {name}", {name});
-    return true;
+    return out;
   }catch(error){
-    let msg = typeof err != 'object' ? err : err.toString();
-    LOG.error(msg);
+    logError(error);
     return false;
   }
 }
