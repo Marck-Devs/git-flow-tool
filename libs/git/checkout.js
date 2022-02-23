@@ -1,5 +1,6 @@
 const { SimpleLogger } = require("mk-simple-logger");
-const { Runner, Error } = require("..");
+const { logError } = require("../error");
+const runner = require("../runner");
 
 /**
  * 
@@ -13,10 +14,10 @@ async function checkout(repo, ref){
   try{
     LOG.info("Running command");
     LOG.debug(command);
-    await Runner(command);
+    await runner(command);
     return true;
   }catch(error){
-    Error.logError(LOG, error);
+    logError(LOG, error);
     return false;
   }
 }

@@ -10,7 +10,7 @@ async function create(repo, name){
   }
   LOG.info("Creating new feature: {name}", {name});
   const FEAT_BASE = "feat/";
-  return await BasicBranching.createBranch(repo, FEAT_BASE + repo);
+  return await BasicBranching.createBranch(repo, FEAT_BASE + name);
 }
 
 async function del(repo, name){
@@ -26,7 +26,7 @@ async function checkout(repo, name){
   try{
     LOG.info("Running command")
     let out = await Checkout(repo, FEAT_BASE + name);
-    LOG.info("Checkout to feature {name}", {name});
+    LOG.info("Checkout to feature {n}", {n:name});
     return out;
   }catch(error){
     logError(error);
