@@ -5,6 +5,11 @@ const path = require('path');
 const { logError } = require('../error');
 const commander = require('../runner');
 
+/**
+ * Get the current status of the repo
+ * @param {string} folder the repo path
+ * @returns {Promise<Object>} the status
+ */
 async function getStatusList(folder) {
     const LOG = new SimpleLogger("Untraked Files");
     const UNTRAKED_STRING = "Untracked files:\n";

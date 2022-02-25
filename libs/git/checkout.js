@@ -1,11 +1,12 @@
 const { SimpleLogger } = require("mk-simple-logger");
-const { Runner, Error } = require("..");
+const { logError } = require("../error");
+const runner = require("../runner");
 
 /**
- * 
+ * Checkout to the reference
  * @param {string} repo repo path
  * @param {string} ref reference to checkout
- * @returns {boolean} if checked out
+ * @returns {Promise<boolean>} if checked out
  */
 async function checkout(repo, ref){
   const LOG = new SimpleLogger("Checkout");
@@ -13,10 +14,10 @@ async function checkout(repo, ref){
   try{
     LOG.info("Running command");
     LOG.debug(command);
-    await Runner(command);
+    await runner(command);
     return true;
   }catch(error){
-    Error.logError(LOG, error);
+    logError(LOG, error);
     return false;
   }
 }

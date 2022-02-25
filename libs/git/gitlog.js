@@ -4,6 +4,12 @@ const {
 const { logError } = require('../error');
 const commander = require('../runner');
 
+/**
+ * Get the git log for the branch that pass as param
+ * @param {string} repo the repo path
+ * @param {string} branch the name of the branch
+ * @returns {Promise<Array>}
+ */
 async function getLogForBranch(repo, branch) {
     const CMD = `git -C ${repo} log --oneline ${branch}`;
     const LOG = new SimpleLogger('Log 4 Branch');
@@ -32,6 +38,12 @@ async function getLogForBranch(repo, branch) {
     return out;
 }
 
+/**
+ * Get the commit data
+ * @param {string} repo the repo path
+ * @param {string} uid the commit id
+ * @returns {Promise<object>} the commit info
+ */
 async function getCommitInfo(repo, uid) {
     const CMD = `git -C ${repo} show ${uid}`;
     const LOG = new SimpleLogger('Commit Info');
