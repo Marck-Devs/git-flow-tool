@@ -3,10 +3,10 @@ const { logError } = require("../error");
 const runner = require("../runner");
 
 /**
- * 
+ * Checkout to the reference
  * @param {string} repo repo path
  * @param {string} ref reference to checkout
- * @returns {boolean} if checked out
+ * @returns {Promise<boolean>} if checked out
  */
 async function checkout(repo, ref){
   const LOG = new SimpleLogger("Checkout");

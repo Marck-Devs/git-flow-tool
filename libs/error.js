@@ -1,4 +1,11 @@
+const { SimpleLogger } = require("mk-simple-logger");
 
+/**
+ * Log the error preprocesing it
+ * @param {SimpleLogger} logger the reference to the logger
+ * @param {any} error the error 
+ * @returns {null}
+ */
 function logError(logger, error){
   let msg = error;
   if(typeof error != "object"){

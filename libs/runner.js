@@ -5,6 +5,11 @@ const {
     SimpleLogger
 } = require('mk-simple-logger');
 
+/**
+ * Execute shell command and return the output
+ * @param {string} cmd the command to execute
+ * @returns {Promise<string>} the command result
+ */
 function runCMD(cmd) {
     return new Promise(async (resolve, reject) => {
         exec(cmd, (error, stdout, stderr) => {

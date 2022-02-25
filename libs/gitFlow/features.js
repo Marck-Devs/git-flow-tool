@@ -2,6 +2,12 @@ const {SimpleLogger} = require("mk-simple-logger");
 const { logError } = require("../error");
 const {BasicBranching, Checkout} = require("../git")
 
+/**
+ * Create new feature
+ * @param {string} repo the repo path
+ * @param {string} name the feature name
+ * @returns {Promise<boolean>} if the branch has been created
+ */
 async function create(repo, name){
   const LOG = new SimpleLogger("CreateFeature");
   if(!repo || repo == ""){
@@ -13,6 +19,12 @@ async function create(repo, name){
   return await BasicBranching.createBranch(repo, FEAT_BASE + name);
 }
 
+/**
+ * Delete a feature
+ * @param {string} repo the repo path
+ * @param {string} name the feature name
+ * @returns {Promise<boolean>} if the branch has been deleted
+ */
 async function del(repo, name){
   const LOG = new SimpleLogger("DeleteFeature");
   LOG.info("Deleting feature {name}", {name});
@@ -20,6 +32,12 @@ async function del(repo, name){
   return await BasicBranching.deleteBranch(repo, FEAT_BASE + name)
 }
 
+/**
+ * Checkout to the feature
+ * @param {string} repo the repo path
+ * @param {string} name the feature name
+ * @returns {Promise<boolean>} if has checked out correctly
+ */
 async function checkout(repo, name){
   const LOG = new SimpleLogger("CheckOutFeature");
   const FEAT_BASE = "feat/";
