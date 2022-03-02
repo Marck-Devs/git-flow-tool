@@ -14,6 +14,7 @@
   "dependencies": {
     "commander": "^9.0.0",
     "dotenv": "^14.2.0",
-    "mk-simple-logger": "^0.1.7"
+    "mk-simple-logger": "^0.1.7",
+    "path-list-to-tree": "^1.1.1"
   }
 }
